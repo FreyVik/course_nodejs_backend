@@ -1,0 +1,29 @@
+{
+  "name": "course_nodejs_backend",
+  "version": "1.0.0",
+  "description": "Api-rest course in nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FreyVik/course_nodejs_backend.git"
+  },
+  "author": "FreyVik",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FreyVik/course_nodejs_backend/issues"
+  },
+  "homepage": "https://github.com/FreyVik/course_nodejs_backend#readme",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "connect-multiparty": "^2.2.0",
+    "express": "^4.18.2",
+    "mongoose": "^6.6.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
