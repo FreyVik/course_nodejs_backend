@@ -2,6 +2,7 @@
 
 var Project = require('../models/project');
 var fs = require('fs');
+var path = require('path');
 
 var controller = {
 	home: function (req, res) {
@@ -20,19 +21,22 @@ var controller = {
 		var project = new Project();
 
 		project.save((err, projectStored) => {
-			if (err)
+			if (err) {
 				return res.status(500).send({
-					message: 'Errpr al guardar',
+					message: 'Error al guardar',
 				});
+			}
 
-			if (!projectStored)
+			if (!projectStored) {
 				return res.status(404).send({
 					message: 'No se ha podido guardar el proyecto',
 				});
+			}
 
-			return res.status(200).send({
+			/*
+			return res.sendStatus(200).send({
 				project: projectStored,
-			});
+			});*/
 		});
 
 		var params = req.body;
@@ -167,6 +171,21 @@ var controller = {
 				message: fileName,
 			});
 		}
+	},
+
+	getImageFile: function (req, res) {
+		var file = req.params.image;
+		var path_file = './uploads/' + file;
+
+		fs.stat(path_file, function (err, stats) {
+			if (!err) {
+				return res.sendFile(path.resolve(path_file));
+			} else {
+				return res.status(200).send({
+					message: 'No existe imagen...',
+				});
+			}
+		});
 	},
 };
 
